@@ -5,7 +5,7 @@ from src.Hand import Hand
 class Game_Server:
     def new_game(self):
         Hand.dice_count = 13
-        Hand.global_res = []
+        Hand.round_res = []
         Hand.can_chose_human = 1
         Hand.can_chose_cow = 1
         Hand.can_chose_chicken = 1
