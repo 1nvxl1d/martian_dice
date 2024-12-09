@@ -1,44 +1,52 @@
 from src.Dice import Dice
-from src.Game_Server import Game_Server
 
 import random
 
 class Hand:
-    res = []
-    round_res = []
-    can_chose_human = 1
-    can_chose_cow = 1
-    can_chose_chicken = 1
-    dice_count = 13
+    def __init__(self, hand: str, res: str, round_res: str, dice_count: int, can_chose_human: int, can_chose_chicken: int, can_chose_cow: int):
+        self.hand = hand
+        self.res = res
+        self.round_res = round_res
+        self.dice_count = dice_count
+        self.can_chose_human = can_chose_human
+        self.can_chose_chicken = can_chose_chicken
+        self.can_chose_cow = can_chose_cow
+
+    def new_game(self):
+        self.dice_count = 13
+        self.round_res = []
+        self.can_chose_human = 1
+        self.can_chose_cow = 1
+        self.can_chose_chicken = 1
 
     def roll_dice(self):
-        Hand.res = [random.choice(Dice.SIDES) for _ in range(Hand.dice_count)]
-        return Hand.res
+        self.res = [random.choice(Dice.SIDES) for _ in range(self.dice_count)]
+        return self.res
 
     def del_tanks(self):
-        Hand.dice_count -= Hand.res.count('t')
-        for _ in range(Hand.res.count('t')):
-            Hand.round_res.append('t')
+        self.dice_count -= self.res.count('t')
+        for _ in range(self.res.count('t')):
+            self.round_res.append('t')
 
     def chose_beam(self):
-        Hand.dice_count -= Hand.res.count('b')
-        for _ in range(Hand.res.count('b')):
-            Hand.round_res.append('b')
+        self.dice_count -= self.res.count('b')
+        for _ in range(self.res.count('b')):
+            self.round_res.append('b')
 
     def chose_human(self):
-        Hand.can_chose_human = 0
-        Hand.dice_count -= Hand.res.count('h')
-        for _ in range(Hand.res.count('h')):
-            Hand.round_res.append('h')
+        self.can_chose_human = 0
+        self.dice_count -= self.res.count('h')
+        for _ in range(self.res.count('h')):
+            self.round_res.append('h')
 
     def chose_cow(self):
-        Hand.can_chose_cow = 0
-        Hand.dice_count -= Hand.res.count('c')
-        for _ in range(Hand.res.count('c')):
-            Hand.round_res.append('c')
+        self.can_chose_cow = 0
+        self.dice_count -= self.res.count('c')
+        for _ in range(self.res.count('c')):
+            self.round_res.append('c')
 
     def chose_chicken(self):
-        Hand.can_chose_chicken = 0
-        Hand.dice_count -= Hand.res.count('ch')
-        for _ in range(Hand.res.count('ch')):
-            Hand.round_res.append('ch')
+        self.can_chose_chicken = 0
+        self.dice_count -= self.res.count('ch')
+        for _ in range(self.res.count('ch')):
+            self.round_res.append('ch')
