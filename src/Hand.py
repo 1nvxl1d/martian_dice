@@ -12,7 +12,7 @@ class Hand:
         self.can_chose_chicken = can_chose_chicken
         self.can_chose_cow = can_chose_cow
 
-    def new_game(self):
+    def round_start(self):
         self.dice_count = 13
         self.round_res = []
         self.can_chose_human = 1

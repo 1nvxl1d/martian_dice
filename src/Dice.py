@@ -10,6 +10,4 @@ class Dice:
         return f'{self.side}'
 
     def __eq__(self, other):
-        if isinstance(other, str):
-            other = Dice.load(other)
         return self.side == other.side

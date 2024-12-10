@@ -8,3 +8,10 @@ class Player:
 
     def __str__(self):
         return f"{self.name}({self.score}): {self.hand}"
+
+    def __eq__(self, other: typing.Self | str | dict):
+        return (
+                self.name == other.name
+                and self.score == other.score
+                and self.hand == other.hand
+        )
