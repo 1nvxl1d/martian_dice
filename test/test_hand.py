@@ -2,6 +2,15 @@ from src.Hand import Hand
 
 hand = Hand(hand=None, res=[], round_res=['b'], dice_count=10, can_chose_cow=0, can_chose_human=0, can_chose_chicken=1)
 
+def test_init():
+    assert hand.hand == None
+    assert hand.res == []
+    assert hand.round_res == ['b']
+    assert hand.dice_count == 10
+    assert hand.can_chose_cow == 0
+    assert hand.can_chose_human == 0
+    assert hand.can_chose_chicken == 1
+
 def test_round_start():
     Hand.round_start(hand)
     assert hand.dice_count == 13
