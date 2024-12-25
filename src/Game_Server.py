@@ -35,7 +35,7 @@ class Game_Server:
     def round(self) -> GamePhase:
         self.hand.round_start()
         k = 1
-        while k:
+        while k or self.hand.dice_count != 0:
             self.hand.roll_dice()
             self.hand.del_tanks()
             dice_choice = input('')
