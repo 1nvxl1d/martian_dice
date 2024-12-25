@@ -1,3 +1,5 @@
+import pytest
+
 from src.Hand import Hand
 
 hand = Hand(hand=None, res=[], round_res=['b'], dice_count=10, can_chose_cow=0, can_chose_human=0, can_chose_chicken=1)
@@ -24,35 +26,40 @@ def test_roll_dice():
     assert hand.res != []
 
 def test_del_tanks():
+    k = hand.dice_count
     Hand.roll_dice(hand)
     Hand.del_tanks(hand)
-    assert hand.dice_count == (10 - hand.res.count('t'))
+    assert hand.dice_count == (k - hand.res.count('t'))
     assert 't' in hand.round_res
 
 def test_chose_beam():
+    k = hand.dice_count
     Hand.roll_dice(hand)
     Hand.chose_beam(hand)
-    assert hand.dice_count == (10 - hand.res.count('b'))
+    assert hand.dice_count == (k - hand.res.count('b'))
     assert 'b' in hand.round_res
 
 def test_chose_human():
+    k = hand.dice_count
     Hand.roll_dice(hand)
     Hand.chose_human(hand)
     assert hand.can_chose_human == 0
-    assert hand.dice_count == (10 - hand.res.count('h'))
+    assert hand.dice_count == (k - hand.res.count('h'))
     assert 'h' in hand.round_res
 
 def test_chose_cow():
+    k = hand.dice_count
     Hand.roll_dice(hand)
     Hand.chose_cow(hand)
     assert hand.can_chose_cow == 0
-    assert hand.dice_count == (10 - hand.res.count('c'))
+    assert hand.dice_count == (k - hand.res.count('c'))
     assert 'c' in hand.round_res
 
 def test_chose_chicken():
+    k = hand.dice_count
     Hand.roll_dice(hand)
     Hand.chose_chicken(hand)
     assert hand.can_chose_chicken == 0
-    assert hand.dice_count == (10 - hand.res.count('ch'))
+    assert hand.dice_count == (k - hand.res.count('ch'))
     assert 'ch' in hand.round_res
 

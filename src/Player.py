@@ -1,5 +1,7 @@
 from src.Hand import Hand
 
+import typing
+
 class Player:
     def __init__(self, name: str, hand: Hand, score: int = 0):
         self.name = name
