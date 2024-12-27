@@ -18,6 +18,7 @@ class Hand:
         self.can_chose_human = 1
         self.can_chose_cow = 1
         self.can_chose_chicken = 1
+        self.res = []
 
     def roll_dice(self):
         self.res = [random.choice(Dice.SIDES) for _ in range(self.dice_count)]
